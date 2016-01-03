@@ -1,0 +1,41 @@
+/*
+ * Copyright 2015-2016 Info2Go
+ * Copyright 2012 Freescale Semiconductor, Inc.
+ * Copyright 2011 Linaro Ltd.
+ *
+ * The code contained herein is licensed under the GNU General Public
+ * License. You may obtain a copy of the GNU General Public License
+ * Version 2 or later at the following locations:
+ *
+ * http://www.opensource.org/licenses/gpl-license.html
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+/dts-v1/;
+#include "imx6q.dtsi"
+#include "imx6qdl-amherst.dtsi"
+
+/ {
+	model = "Info2Go i.MX6 Quad Board";
+	compatible = "fsl,imx6q-amherst", "fsl,imx6q";
+};
+
+&ldb {
+	ipu_id = <0>;
+	disp_id = <1>;
+	ext_ref = <1>;
+	mode = "spl1";
+	sec_ipu_id = <0>;
+	sec_disp_id = <0>;
+	status = "okay";
+};
+
+
+&mxcfb1 {
+	status = "okay";
+};
+
+
+&mxcfb2 {
+	status = "okay";
+};
