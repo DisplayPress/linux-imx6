@@ -857,8 +857,10 @@ static void __init imx6q_clocks_init(struct device_node *ccm_node)
 	 * Let's initially set up CLKO with OSC24M, since this configuration
 	 * is widely used by imx6q board designs to clock audio codec.
 	 */
-	imx_clk_set_parent(clk[IMX6QDL_CLK_CKO2_SEL], clk[IMX6QDL_CLK_OSC]);
-	imx_clk_set_parent(clk[IMX6QDL_CLK_CKO], clk[IMX6QDL_CLK_CKO2]);
+	/* MOE: CLKO2 not on amherst board, so set CLK0 directly to OSC24M parent */
+	/*imx_clk_set_parent(clk[IMX6QDL_CLK_CKO2_SEL], clk[IMX6QDL_CLK_OSC]);*/
+	/*imx_clk_set_parent(clk[IMX6QDL_CLK_CKO], clk[IMX6QDL_CLK_CKO2]);*/
+	imx_clk_set_parent(clk[IMX6QDL_CLK_CKO], clk[IMX6QDL_CLK_OSC]);
 
 	/* Audio-related clocks configuration */
 	imx_clk_set_parent(clk[IMX6QDL_CLK_SPDIF_SEL], clk[IMX6QDL_CLK_PLL3_PFD3_454M]);
@@ -883,7 +885,9 @@ static void __init imx6q_clocks_init(struct device_node *ccm_node)
 	}
 
 	/*Set enet_ref clock to 125M to supply for RGMII tx_clk */
-	clk_set_rate(clk[IMX6QDL_CLK_ENET_REF], 125000000);
+	/*clk_set_rate(clk[IMX6QDL_CLK_ENET_REF], 125000000);*/
+	/* MOE: Set ethernet clock */
+	clk_set_rate(clk[IMX6QDL_CLK_ENET_REF], 50000000);
 
 #ifdef CONFIG_MX6_VPU_352M
 	/*
