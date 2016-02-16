@@ -366,14 +366,15 @@
 	status = "okay";
 	wifi-host;
 	non-removable;
-	max-clock = <25000000>;
-/*      wifi-host
+	keep-power-in-suspend;
+/*	max-clock = <25000000>;
+        wifi-host
 	non-removable
 	keep-power-in-suspend
 	pm-ignore-notify
 	max-clock = <25000000>*/
 
-	powerdown {
+/*	powerdown {
 		label = "wifi-pwrdwn";
 		gpios = <&gpio7 1 1>;
 	};
@@ -381,7 +382,7 @@
 	reset {
 		label = "wifi-reset";
 		gpios = <&gpio7 8 1>;
-	};
+	};*/
 };
 /* End of WiFi setup */
 
